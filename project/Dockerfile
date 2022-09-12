@@ -1,5 +1,5 @@
 FROM python:3.8
-ADD techtrends /app
+ADD ./techtrends /app
 WORKDIR /app
 RUN pip install -r requirements.txt
 RUN python init_db.py
