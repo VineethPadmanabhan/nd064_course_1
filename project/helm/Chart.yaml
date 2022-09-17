@@ -1,0 +1,9 @@
+apiVersion: v1
+name: techtrends 
+description: techtrends deployment
+keywords:
+- techtrends 
+version: 1.0.0
+maintainers:
+- name: Vineeth Padmanabhan 
+  email: vineeth.p.n@gmail.com
