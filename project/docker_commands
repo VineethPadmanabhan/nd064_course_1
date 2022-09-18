@@ -2,49 +2,64 @@
 docker build -t techtrends .
 
 ## Docker commands used to run the application
-docker run -d -p 7111:3111 techtrends
+docker run -d -p 7111:3111 --name techtrends techtrends
 
 ## Docker commands used to get the application logs
 # TODO: insert the docker logs command
-docker ps ( To get running container id which resolved to 'c57ced246b9e')
-docker logs c57ced246b9e
+docker logs -f $(docker ps | grep techtrends | tr " " "\n" | tail -1)
 
 ## Logs from the container running the TechTrends application
+ localhost:/vagrant # docker logs -f $(docker ps | grep techtrends | tr " " "\n" | tail -1)
  * Serving Flask app 'app' (lazy loading)
  * Environment: production
    WARNING: This is a development server. Do not use it in a production deployment.
    Use a production WSGI server instead.
  * Debug mode: off
-WARNING:werkzeug:09/12/2022,12:07:28,  * Running on all addresses.
+WARNING:werkzeug:09/18/2022,17:30:20,  * Running on all addresses.
    WARNING: This is a development server. Do not use it in a production deployment.
-INFO:werkzeug:09/12/2022,12:07:28,  * Running on http://172.17.0.2:3111/ (Press CTRL+C to quit)
-INFO:werkzeug:09/12/2022,12:08:37, 10.0.2.2 - - [12/Sep/2022 12:08:37] "GET / HTTP/1.1" 200 -
-INFO:werkzeug:09/12/2022,12:08:37, 10.0.2.2 - - [12/Sep/2022 12:08:37] "GET /static/css/main.css HTTP/1.1" 200 -
-INFO:werkzeug:09/12/2022,12:08:38, 10.0.2.2 - - [12/Sep/2022 12:08:38] "GET /favicon.ico HTTP/1.1" 404 -
-INFO:app:09/12/2022,12:09:15, Article "2020 CNCF Annual Report" retrieved!
-INFO:werkzeug:09/12/2022,12:09:15, 10.0.2.2 - - [12/Sep/2022 12:09:15] "GET /1 HTTP/1.1" 200 -
-INFO:werkzeug:09/12/2022,12:09:15, 10.0.2.2 - - [12/Sep/2022 12:09:15] "GET /static/css/main.css HTTP/1.1" 304 -
-INFO:werkzeug:09/12/2022,12:09:29, 10.0.2.2 - - [12/Sep/2022 12:09:29] "GET /create HTTP/1.1" 200 -
-INFO:werkzeug:09/12/2022,12:09:29, 10.0.2.2 - - [12/Sep/2022 12:09:29] "GET /static/css/main.css HTTP/1.1" 304 -
-INFO:app:09/12/2022,12:10:05, A new article is created - "Techtrends is online"
-INFO:werkzeug:09/12/2022,12:10:05, 10.0.2.2 - - [12/Sep/2022 12:10:05] "POST /create HTTP/1.1" 302 -
-INFO:werkzeug:09/12/2022,12:10:05, 10.0.2.2 - - [12/Sep/2022 12:10:05] "GET / HTTP/1.1" 200 -
-INFO:werkzeug:09/12/2022,12:10:05, 10.0.2.2 - - [12/Sep/2022 12:10:05] "GET /static/css/main.css HTTP/1.1" 304 -
-INFO:app:09/12/2022,12:10:13, About Us page is retrieved.
-INFO:werkzeug:09/12/2022,12:10:13, 10.0.2.2 - - [12/Sep/2022 12:10:13] "GET /about HTTP/1.1" 200 -
-INFO:werkzeug:09/12/2022,12:10:13, 10.0.2.2 - - [12/Sep/2022 12:10:13] "GET /static/css/main.css HTTP/1.1" 304 -
-INFO:app:09/12/2022,12:12:12, Metrics request successfull
-INFO:werkzeug:09/12/2022,12:12:12, 10.0.2.2 - - [12/Sep/2022 12:12:12] "GET /metrics HTTP/1.1" 200 -
-INFO:app:09/12/2022,12:12:19, Status request successfull
-DEBUG:app:09/12/2022,12:12:19, DEBUG message
-INFO:werkzeug:09/12/2022,12:12:19, 10.0.2.2 - - [12/Sep/2022 12:12:19] "GET /healthz HTTP/1.1" 200 -
-INFO:werkzeug:09/12/2022,12:12:26, 10.0.2.2 - - [12/Sep/2022 12:12:26] "GET /status HTTP/1.1" 404 -
-INFO:werkzeug:09/12/2022,12:13:37, 10.0.2.2 - - [12/Sep/2022 12:13:37] "GET / HTTP/1.1" 200 -
-INFO:werkzeug:09/12/2022,12:13:37, 10.0.2.2 - - [12/Sep/2022 12:13:37] "GET /static/css/main.css HTTP/1.1" 304 -
-INFO:app:09/12/2022,12:13:38, Article "2020 CNCF Annual Report" retrieved!
-INFO:werkzeug:09/12/2022,12:13:38, 10.0.2.2 - - [12/Sep/2022 12:13:38] "GET /1 HTTP/1.1" 200 -
-INFO:werkzeug:09/12/2022,12:13:38, 10.0.2.2 - - [12/Sep/2022 12:13:38] "GET /static/css/main.css HTTP/1.1" 304 -
-INFO:app:09/12/2022,12:13:42, A non-existing article 10 is accessed and a 404 page is returned.
-INFO:werkzeug:09/12/2022,12:13:42, 10.0.2.2 - - [12/Sep/2022 12:13:42] "GET /10 HTTP/1.1" 404 -
-INFO:werkzeug:09/12/2022,12:13:42, 10.0.2.2 - - [12/Sep/2022 12:13:42] "GET /static/css/main.css HTTP/1.1" 304 -
-
+INFO:werkzeug:09/18/2022,17:30:20,  * Running on http://172.17.0.2:3111/ (Press CTRL+C to quit)
+WARNING:werkzeug:09/18/2022,17:30:20,  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+INFO:werkzeug:09/18/2022,17:30:20,  * Running on http://172.17.0.2:3111/ (Press CTRL+C to quit)
+INFO:werkzeug:09/18/2022,17:32:34, 10.0.2.2 - - [18/Sep/2022 17:32:34] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:09/18/2022,17:32:34, 10.0.2.2 - - [18/Sep/2022 17:32:34] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:09/18/2022,17:32:34, 10.0.2.2 - - [18/Sep/2022 17:32:34] "GET /static/css/main.css HTTP/1.1" 200 -
+INFO:werkzeug:09/18/2022,17:32:34, 10.0.2.2 - - [18/Sep/2022 17:32:34] "GET /static/css/main.css HTTP/1.1" 200 -
+INFO:werkzeug:09/18/2022,17:32:34, 10.0.2.2 - - [18/Sep/2022 17:32:34] "GET /favicon.ico HTTP/1.1" 404 -
+INFO:werkzeug:09/18/2022,17:32:34, 10.0.2.2 - - [18/Sep/2022 17:32:34] "GET /favicon.ico HTTP/1.1" 404 -
+INFO:app:09/18/2022,17:33:02, Article "2020 CNCF Annual Report" retrieved!
+INFO:app:09/18/2022,17:33:02, Article "2020 CNCF Annual Report" retrieved!
+INFO:werkzeug:09/18/2022,17:33:03, 10.0.2.2 - - [18/Sep/2022 17:33:03] "GET /1 HTTP/1.1" 200 -
+INFO:werkzeug:09/18/2022,17:33:03, 10.0.2.2 - - [18/Sep/2022 17:33:03] "GET /1 HTTP/1.1" 200 -
+INFO:werkzeug:09/18/2022,17:33:03, 10.0.2.2 - - [18/Sep/2022 17:33:03] "GET /static/css/main.css HTTP/1.1" 304 -
+INFO:werkzeug:09/18/2022,17:33:03, 10.0.2.2 - - [18/Sep/2022 17:33:03] "GET /static/css/main.css HTTP/1.1" 304 -
+INFO:app:09/18/2022,17:33:11, A non-existing article 10 is accessed and a 404 page is returned.
+INFO:app:09/18/2022,17:33:11, A non-existing article 10 is accessed and a 404 page is returned.
+INFO:werkzeug:09/18/2022,17:33:11, 10.0.2.2 - - [18/Sep/2022 17:33:11] "GET /10 HTTP/1.1" 404 -
+INFO:werkzeug:09/18/2022,17:33:11, 10.0.2.2 - - [18/Sep/2022 17:33:11] "GET /10 HTTP/1.1" 404 -
+INFO:werkzeug:09/18/2022,17:33:12, 10.0.2.2 - - [18/Sep/2022 17:33:12] "GET /static/css/main.css HTTP/1.1" 304 -
+INFO:werkzeug:09/18/2022,17:33:12, 10.0.2.2 - - [18/Sep/2022 17:33:12] "GET /static/css/main.css HTTP/1.1" 304 -
+INFO:werkzeug:09/18/2022,17:33:27, 10.0.2.2 - - [18/Sep/2022 17:33:27] "GET /create HTTP/1.1" 200 -
+INFO:werkzeug:09/18/2022,17:33:27, 10.0.2.2 - - [18/Sep/2022 17:33:27] "GET /create HTTP/1.1" 200 -
+INFO:werkzeug:09/18/2022,17:33:27, 10.0.2.2 - - [18/Sep/2022 17:33:27] "GET /static/css/main.css HTTP/1.1" 304 -
+INFO:werkzeug:09/18/2022,17:33:27, 10.0.2.2 - - [18/Sep/2022 17:33:27] "GET /static/css/main.css HTTP/1.1" 304 -
+INFO:app:09/18/2022,17:33:44, A new article is created - "Test Post Title"
+INFO:app:09/18/2022,17:33:44, A new article is created - "Test Post Title"
+INFO:werkzeug:09/18/2022,17:33:44, 10.0.2.2 - - [18/Sep/2022 17:33:44] "POST /create HTTP/1.1" 302 -
+INFO:werkzeug:09/18/2022,17:33:44, 10.0.2.2 - - [18/Sep/2022 17:33:44] "POST /create HTTP/1.1" 302 -
+INFO:werkzeug:09/18/2022,17:33:45, 10.0.2.2 - - [18/Sep/2022 17:33:45] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:09/18/2022,17:33:45, 10.0.2.2 - - [18/Sep/2022 17:33:45] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:09/18/2022,17:33:45, 10.0.2.2 - - [18/Sep/2022 17:33:45] "GET /static/css/main.css HTTP/1.1" 304 -
+INFO:werkzeug:09/18/2022,17:33:45, 10.0.2.2 - - [18/Sep/2022 17:33:45] "GET /static/css/main.css HTTP/1.1" 304 -
+INFO:app:09/18/2022,17:33:57, Metrics request successfull
+INFO:app:09/18/2022,17:33:57, Metrics request successfull
+INFO:werkzeug:09/18/2022,17:33:57, 10.0.2.2 - - [18/Sep/2022 17:33:57] "GET /metrics HTTP/1.1" 200 -
+INFO:werkzeug:09/18/2022,17:33:57, 10.0.2.2 - - [18/Sep/2022 17:33:57] "GET /metrics HTTP/1.1" 200 -
+INFO:werkzeug:09/18/2022,17:34:02, 10.0.2.2 - - [18/Sep/2022 17:34:02] "GET /status HTTP/1.1" 404 -
+INFO:werkzeug:09/18/2022,17:34:02, 10.0.2.2 - - [18/Sep/2022 17:34:02] "GET /status HTTP/1.1" 404 -
+INFO:app:09/18/2022,17:34:09, Status request successfull
+DEBUG:app:09/18/2022,17:34:09, DEBUG message
+INFO:app:09/18/2022,17:34:09, Status request successfull
+DEBUG:app:09/18/2022,17:34:09, DEBUG message
+INFO:werkzeug:09/18/2022,17:34:09, 10.0.2.2 - - [18/Sep/2022 17:34:09] "GET /healthz HTTP/1.1" 200 -
+INFO:werkzeug:09/18/2022,17:34:09, 10.0.2.2 - - [18/Sep/2022 17:34:09] "GET /healthz HTTP/1.1" 200 -
